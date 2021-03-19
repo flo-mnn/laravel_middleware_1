@@ -6,5 +6,6 @@
 <div class="separator rounded bg-primary" style="height: 3px;">
 </div>
 <div>
+    
 </div>
 @endsection

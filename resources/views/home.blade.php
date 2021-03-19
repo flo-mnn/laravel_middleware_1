@@ -12,8 +12,9 @@
 
                     <h5 class="text-right mx-3">Welcome <span class="text-capitalize">{{Auth::user()->name}}</span></h5>
                     <div class="px-3">
-                        <a href="{{route('users.index')}}" class="btn btn-light text-primary font-weight-bold my-2">Users</a><br>
-                        <a href="{{route('articles.index')}}" class="btn btn-light text-primary font-weight-bold my-2">Articles</a><br>
+                        <a href="{{route('articles.create')}}" class="btn btn-light text-primary font-weight-bold my-2">Add an article +</a><br>
+                        <a href="{{route('articles.index')}}" class="btn btn-primary  font-weight-bold my-2">Articles</a><br>
+                        <a href="{{route('users.index')}}" class="btn btn-primary font-weight-bold my-2">Users</a><br>
                     </div>
         </div>
         {{-- col intermediaire pour repousser l'autre --}}
