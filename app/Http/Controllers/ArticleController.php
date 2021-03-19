@@ -12,7 +12,9 @@ class ArticleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin');
+        // $this->middleware('isAdmin');
+        $this->middleware('isAllowedArticles');
+
     }
     /**
      * Display a listing of the resource.

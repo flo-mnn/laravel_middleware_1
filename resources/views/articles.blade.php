@@ -1,4 +1,7 @@
 @extends('template.main')
 @section('content')
-    <h1>ARTICLES UNDER CONSTRUCTION</h1>
+    <header class="w-100 bg-primary text-white d-flex justify-content-center align-items-center" style="height: 200px; margin-top: 100px;">
+        <h1><em>Browse our articles here</em></h1>
+    </header>
+    @include('partials.articles_table')
 @endsection

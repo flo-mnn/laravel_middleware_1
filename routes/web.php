@@ -25,9 +25,14 @@ Route::get('/front/articles', function(){
         'articles'=> Article::all()
     ]);
 })->middleware('auth')->name('articles.front');
+Route::get('/articles/read/{article}', function(Article $article){
+    return view('article_read',[
+        'article'=> $article
+    ]);
+})->middleware('auth')->name('articles.read');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('isAdmin')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('isAllowedArticles')->name('home');
 Route::resource('articles',ArticleController::class);
 Route::resource('users',UserController::class);

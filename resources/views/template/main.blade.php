@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center {{Route::getCurrentRoute()->uri() != '/'? null : "min-h-screen"}} bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <div class="hidden fixed top-0 left-0 px-6 py-4 sm:block">
                 <a href="{{ url('/') }}" class="btn btn-light text-primary">Home</a>
                 <a href="{{ route('articles.front') }}" class="btn btn-light text-primary">Articles</a>
@@ -33,9 +33,9 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                     {{-- condition ici pour seulement les membres ne voient plus le bouton --}}
-                        {{-- @if (Auth::user()->role_id !=2)  --}}
+                        @if (Auth::user()->role_id !=2) 
                         {{-- confition pour que seul les admins voient le bouton debut exo part2 --}}
-                        @if (Auth::user()->role_id ==1) 
+                        {{-- @if (Auth::user()->role_id ==1)  --}}
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Admin</a>
                         @else
                         <form action="{{route('logout')}}" method="POST">
@@ -52,9 +52,14 @@
                     @endauth
                 </div>
             @endif
+                @if (Route::getCurrentRoute()->uri() == "/")
+                @yield('content')    
+                </div>
+                @else 
+                </div>
+                @yield('content')
+                @endif
 
-            @yield('content')
-        </div>
 
         <script src="{{asset('js/app.js')}}"></script>
     </body>
